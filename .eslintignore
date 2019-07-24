@@ -1,0 +1,6 @@
+__mocks__/
+__tests__/
+.fusion/
+dist/
+build/
+resources/dist/
