@@ -2,8 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import apiEllipsis from '../services/apiEllipsis';
+import path from '../util/splitpath';
+console.log(path)
 
-const path = window.location.pathname.split('/').slice(1);
 const { id, config } = apiEllipsis.dataToEdit();
 
 function reducer(state, action) {
