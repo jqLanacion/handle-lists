@@ -6,6 +6,8 @@ const CustomEmbed = () => {
   switch (path[0]) {
     case 'ingredientes':
       return <HandleListContainer />;
+    case 'preparacion':
+      return <HandleListContainer />;
     case 'sarasa':
       return <p>Sarasa style</p>;
     default:

@@ -60,7 +60,7 @@ HandleListComponent.propTypes = {
   setConfigData: PropTypes.func.isRequired,
   cancelMessage: PropTypes.func.isRequired,
   handleChangedTitle: PropTypes.func.isRequired,
-  valueTitle: PropTypes.string.isRequired,
+  valueTitle: PropTypes.string,
 };
 
 HandleListComponent.defaultProps = {
@@ -68,6 +68,7 @@ HandleListComponent.defaultProps = {
     titleList: '',
     items: [],
   },
+  valueTitle: '',
 };
 
 export default HandleListComponent;
