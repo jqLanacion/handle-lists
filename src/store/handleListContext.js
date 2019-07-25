@@ -1,8 +1,10 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import apiEllipsis from '../services/apiEllipsis';
 
 const path = window.location.pathname.split('/').slice(1);
-const {id, config} = apiEllipsis.dataToEdit()
+const { id, config } = apiEllipsis.dataToEdit();
 
 function reducer(state, action) {
   switch (action.type) {
@@ -17,21 +19,27 @@ function reducer(state, action) {
 
 const initialState = {
   id,
-  typeList : path[0] || '',
+  typeList: path[0] || '',
   mode: path[1] || 'view',
   titleList: path[0] || '',
-  items: config ? config.items : []
+  items: config ? config.items : [],
 };
 
 export const Store = React.createContext();
 
-export const ListContectComponent = (props) => {
+const ListContectComponent = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState);
   const value = { state, dispatch };
 
   return (
     <Store.Provider value={value}>
-      {props.children}
+      {children}
     </Store.Provider>
   );
-}
+};
+
+ListContectComponent.propTypes = {
+  children: PropTypes.any.isRequired,
+};
+
+export default ListContectComponent;

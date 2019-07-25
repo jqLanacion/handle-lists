@@ -1,5 +1,5 @@
 import React from 'react';
-import HandleListContainer from './containers/HandleListContainer/index'
+import HandleListContainer from './containers/HandleListContainer';
 
 function App() {
   return (

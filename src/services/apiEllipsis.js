@@ -1,3 +1,4 @@
+/* eslint-disable */
 const apiEllipsis = (function () {
   const init = () => {
     window.onload = () => {
@@ -6,34 +7,34 @@ const apiEllipsis = (function () {
           wait: 0
         },
         parseQueryString()
-      )
+      );
       // Emulate wait time
       setTimeout(function() {
         sendMessage('ready', {
           height: document.documentElement.scrollHeight
-        })
-      }, Number.parseInt(parameters.wait))
-    }   
-  }
+        });
+      }, Number.parseInt(parameters.wait));
+    };   
+  };
 
   const dataToEdit = () => {
-    const data = parseQueryString()
+    const data = parseQueryString();
 
     return data['p']
       ? JSON.parse(decodeURIComponent(data['p']))
-      : []
-  }
+      : [];
+  };
   
   const parseQueryString = () => {
-    const params = window.location.search.split('?')[1] || ''
-    const kv = params.split('&')
+    const params = window.location.search.split('?')[1] || '';
+    const kv = params.split('&');
     return kv.reduce((result, item) => {
-      const [key, value] = item.split('=')
+      const [key, value] = item.split('=');
       return Object.assign(result, {
         [key]: value
-      })
-    }, {})
-  }
+      });
+    }, {});
+  };
 
   const sendMessage = (action, data) => {
     window.parent.postMessage(
@@ -44,16 +45,16 @@ const apiEllipsis = (function () {
         key: parseQueryString()['k']
       }),
       '*'
-    )
-  }
+    );
+  };
 
-  const createNewEmbed = (config, url) => {
+  const createNewEmbed = ({url, config}) => {
     sendMessage('data', {
       id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString(16),
       url,
       config
     });
-  }
+  };
   
   const applyChanges = ({id, url, config}) => {
     sendMessage('data', {
@@ -61,11 +62,11 @@ const apiEllipsis = (function () {
       url,
       config
     });
-  }
+  };
 
   const dismissEditor = () => {
     sendMessage('cancel');
-  }
+  };
 
   return {
     init,
@@ -73,7 +74,8 @@ const apiEllipsis = (function () {
     applyChanges,
     dismissEditor,
     dataToEdit
-  }
-})();
+  };
+}());
 
-export default apiEllipsis
+export default apiEllipsis;
+/* eslint-enable */

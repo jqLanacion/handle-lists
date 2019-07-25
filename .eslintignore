@@ -4,3 +4,5 @@ __tests__/
 dist/
 build/
 resources/dist/
+
+src/serviceWorker.js

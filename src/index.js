@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import apiEllipsis from './services/apiEllipsis'
+import apiEllipsis from './services/apiEllipsis';
 
 apiEllipsis.init();
 
