@@ -7,19 +7,28 @@ import { capitalize } from '../../util/capitalize';
 
 // eslint-disable-next-line max-len
 const HandleListComponent = ({
-  state, bind, handleSubmit, removeItem, setConfigData, cancelMessage,
+  state, bind, handleSubmit, removeItem, setConfigData, cancelMessage, handleChangedTitle,
+  valueTitle,
 }) => (
-  <div className="container" style={{ marginTop: '60px' }}>
+  <div className="container" style={{ marginTop: '30px' }}>
     <div className="row justify-content-md-center">
       <div className="col-md-6">
         <div className="" style={{ padding: '15px' }}>
-          <p>{capitalize(state.titleList)}</p>
+          <h3 style={{ marginBottom: '30px' }}>{capitalize(state.titleList)}</h3>
+          <input
+            value={valueTitle}
+            onChange={handleChangedTitle}
+            placeholder="Título de lista"
+            className="form-control"
+          />
+          <hr />
+          <br />
           <EntryFormItem
             bind={bind}
             _onSubmit={handleSubmit}
           />
+          <br />
           <div>
-            Elementos
             <ListItems items={state.items} removeItem={removeItem} />
           </div>
           <br />
@@ -50,6 +59,8 @@ HandleListComponent.propTypes = {
   removeItem: PropTypes.func.isRequired,
   setConfigData: PropTypes.func.isRequired,
   cancelMessage: PropTypes.func.isRequired,
+  handleChangedTitle: PropTypes.func.isRequired,
+  valueTitle: PropTypes.string.isRequired,
 };
 
 HandleListComponent.defaultProps = {

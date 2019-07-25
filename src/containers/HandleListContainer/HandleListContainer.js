@@ -2,12 +2,19 @@ import React, { useContext } from 'react';
 import ViewList from '../../components/HandleListComponents/ViewList';
 import HandleListComponent from '../../components/HandleListComponents/index';
 import { Store } from '../../store/handleListContext';
-import useInput from '../../hooks/useInput';
+import useInput from '../../hooks/HandleListContainer/useInput';
 import apiEllipsis from '../../services/apiEllipsis';
 
 function HandleListContainer() {
   const { value, bind, reset } = useInput('');
   const { state, dispatch } = useContext(Store);
+
+  const handleChangedTitle = (e) => {
+    dispatch({
+      type: 'SET_TITLE_LIST',
+      payload: { titleList: e.target.value },
+    });
+  };
 
   /**
    * Si la solicitud es de una vista,
@@ -57,13 +64,16 @@ function HandleListContainer() {
         id: state.id,
         url: 'https://handle-lists.itjquintana.now.sh/',
         config: {
+          titleList: state.titleList,
+          typeList: state.typeList,
           items: state.items,
         },
       });
     } else {
       apiEllipsis.createNewEmbed({
         config: {
-          title: state.titleList,
+          titleList: state.titleList,
+          typeList: state.typeList,
           items: state.items,
         },
       });
@@ -79,6 +89,8 @@ function HandleListContainer() {
 
   return (
     <HandleListComponent
+      valueTitle={state.titleList}
+      handleChangedTitle={handleChangedTitle}
       state={state}
       bind={bind}
       handleSubmit={handleSubmit}

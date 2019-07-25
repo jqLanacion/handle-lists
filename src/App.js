@@ -11,7 +11,7 @@ const CustomEmbed = () => {
     default:
       return <h3>Custom Embed not Found</h3>;
   }
-}
+};
 
 function App() {
   return (
