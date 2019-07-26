@@ -33,6 +33,7 @@ const HandleListComponent = ({
           </div>
           <br />
           <button
+            disabled={state.items.length === 0}
             type="button"
             className="btn btn-primary float-right px-4"
             onClick={setConfigData}

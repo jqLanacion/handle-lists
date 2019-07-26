@@ -32,7 +32,7 @@ function HandleListContainer() {
     if (value.length === 0) return;
 
     const { items } = state;
-    items.push(value);
+    items.unshift(value);
 
     dispatch({
       type: 'ADD_ITEM',
